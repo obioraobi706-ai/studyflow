@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#F3EBDD">
+    <title>StudyFlow | Your Cozy Study Space</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+    <div class="ambient ambient-three"></div>
+
+    <div class="leaves" aria-hidden="true">
+        <span>🍂</span><span>🍁</span><span>🍂</span><span>🍁</span>
+        <span>🍂</span><span>🍁</span><span>🍂</span><span>🍁</span>
+    </div>
+
+    <header class="topbar">
+        <a class="brand" href="#" aria-label="StudyFlow home">
+            <span class="brand-icon">✿</span>
+            <span>studyflow<span class="brand-dot">.</span></span>
+        </a>
+        <div class="season-label">☕ YOUR COZY STUDY CORNER</div>
+    </header>
+
+    <main class="dashboard">
+        <section class="hero">
+            <div class="hero-content">
+                <span class="eyebrow">A LITTLE PROGRESS EVERY DAY ✨</span>
+                <h1>Make room for<br><span>your growth.</span></h1>
+                <p>Your own little corner of the world to learn, focus, and bloom.</p>
+                <a href="#tasks" class="hero-button">Let's get studying <span>↗</span></a>
+            </div>
+            <div class="hero-art" aria-hidden="true">
+                <div class="sun"></div>
+                <div class="hill hill-back"></div>
+                <div class="hill hill-front"></div>
+                <div class="art-note">slow days,<br>soft progress.</div>
+                <span class="art-leaf">🍂</span>
+            </div>
+        </section>
+
+        <section class="date-row">
+            <div>
+                <p class="section-label">YOUR LITTLE DAILY RESET</p>
+                <h2 id="todayDate">A fresh new day 🌱</h2>
+            </div>
+            <div class="date-badge">
+                <span>LOCAL TIME</span>
+                <strong id="clock">--:--</strong>
+            </div>
+        </section>
+
+        <section class="stats-grid" aria-label="Study statistics">
+            <article class="stat-card stat-lavender">
+                <span class="stat-icon">📚</span>
+                <p>Total tasks</p>
+                <strong id="totalTasks">0</strong>
+                <span class="stat-caption">Little things add up.</span>
+            </article>
+            <article class="stat-card stat-lime">
+                <span class="stat-icon">🌱</span>
+                <p>Completed</p>
+                <strong id="completedTasks">0</strong>
+                <span class="stat-caption">Look how far you've come.</span>
+            </article>
+            <article class="stat-card stat-peach">
+                <span class="stat-icon">🕯️</span>
+                <p>Still to do</p>
+                <strong id="remainingTasks">0</strong>
+                <span class="stat-caption">One step at a time.</span>
+            </article>
+        </section>
+
+        <section class="progress-card">
+            <div class="progress-heading">
+                <div>
+                    <p class="section-label">YOUR DAILY PROGRESS</p>
+                    <h2>You're doing lovely. ♡</h2>
+                </div>
+                <strong id="progressPercent">0%</strong>
+            </div>
+            <div class="progress-track" id="progressTrack" role="progressbar"
+                aria-label="Study task completion" aria-valuemin="0"
+                aria-valuemax="100" aria-valuenow="0">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <p class="progress-message" id="progressMessage">Every little step counts. Let's begin!</p>
+        </section>
+
+        <section class="focus-tools" aria-label="Focus timer and progress rings">
+            <article class="focus-panel">
+                <p class="section-label">A LITTLE FOCUS TIME</p>
+                <h2>Pomodoro corner 🍅</h2>
+                <p class="focus-description">Focus gently, then give yourself a proper little break.</p>
+                <div class="pomodoro-modes" role="group" aria-label="Pomodoro timer mode">
+                    <button type="button" class="pomodoro-mode active" data-mode="focus">Focus · 25m</button>
+                    <button type="button" class="pomodoro-mode" data-mode="short">Short break · 5m</button>
+                    <button type="button" class="pomodoro-mode" data-mode="long">Long break · 15m</button>
+                </div>
+                <div class="pomodoro-display">
+                    <svg class="progress-ring" viewBox="0 0 120 120" role="img" aria-label="Pomodoro countdown">
+                        <circle class="ring-track" cx="60" cy="60" r="50"></circle>
+                        <circle class="ring-progress ring-deep" id="pomodoroRing" cx="60" cy="60" r="50"></circle>
+                        <text class="ring-time" id="pomodoroTime" x="60" y="58">25:00</text>
+                        <text class="ring-caption" id="pomodoroCaption" x="60" y="73">READY WHEN YOU ARE</text>
+                    </svg>
+                </div>
+                <div class="pomodoro-controls">
+                    <button type="button" class="focus-button" id="pomodoroStart">Start focus</button>
+                    <button type="button" class="focus-button secondary" id="pomodoroReset">Reset</button>
+                    <button type="button" class="focus-button secondary" id="pomodoroSkip">Skip</button>
+                </div>
+                <p class="focus-status" id="pomodoroStatus" aria-live="polite">Take a breath. You're right on time.</p>
+            </article>
+
+            <article class="rings-panel">
+                <p class="section-label">YOUR LITTLE WINS</p>
+                <h2>Progress, in colour ♡</h2>
+                <p class="focus-description">Every ring is a reminder that small steps count.</p>
+                <div class="rings-grid">
+                    <div class="mini-ring-card">
+                        <svg class="progress-ring mini-ring" viewBox="0 0 120 120" role="img" aria-label="Task completion">
+                            <circle class="ring-track" cx="60" cy="60" r="50"></circle>
+                            <circle class="ring-progress ring-lavender" id="tasksRing" cx="60" cy="60" r="50"></circle>
+                            <text class="ring-time" id="tasksRingValue" x="60" y="64">0%</text>
+                        </svg>
+                        <p class="mini-ring-title">Tasks done</p>
+                        <p class="mini-ring-subtitle" id="tasksRingCaption">A fresh start</p>
+                    </div>
+                    <div class="mini-ring-card">
+                        <svg class="progress-ring mini-ring" viewBox="0 0 120 120" role="img" aria-label="Focus time progress">
+                            <circle class="ring-track" cx="60" cy="60" r="50"></circle>
+                            <circle class="ring-progress ring-deep" id="focusRing" cx="60" cy="60" r="50"></circle>
+                            <text class="ring-time" id="focusRingValue" x="60" y="64">0m</text>
+                        </svg>
+                        <p class="mini-ring-title">Focus time</p>
+                        <p class="mini-ring-subtitle">Today's focus minutes</p>
+                    </div>
+                    <div class="mini-ring-card">
+                        <svg class="progress-ring mini-ring" viewBox="0 0 120 120" role="img" aria-label="Focus sessions">
+                            <circle class="ring-track" cx="60" cy="60" r="50"></circle>
+                            <circle class="ring-progress ring-green" id="sessionsRing" cx="60" cy="60" r="50"></circle>
+                            <text class="ring-time" id="sessionsRingValue" x="60" y="64">0/4</text>
+                        </svg>
+                        <p class="mini-ring-title">Focus sessions</p>
+                        <p class="mini-ring-subtitle">A little at a time</p>
+                    </div>
+                    <div class="mini-ring-card">
+                        <svg class="progress-ring mini-ring" viewBox="0 0 120 120" role="img" aria-label="Pomodoro timer progress">
+                            <circle class="ring-track" cx="60" cy="60" r="50"></circle>
+                            <circle class="ring-progress ring-blue" id="breakRing" cx="60" cy="60" r="50"></circle>
+                            <text class="ring-time" id="breakRingValue" x="60" y="64">0%</text>
+                        </svg>
+                        <p class="mini-ring-title">Timer progress</p>
+                        <p class="mini-ring-subtitle">Current session</p>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <section class="quote-card">
+            <span class="quote-mark">“</span>
+            <div>
+                <p id="dailyQuote">You don't have to bloom all at once.</p>
+                <span>A LITTLE REMINDER FOR YOU</span>
+            </div>
+            <span class="quote-flower">✿</span>
+        </section>
+
+        <section class="tasks-section" id="tasks">
+            <div class="tasks-heading">
+                <div>
+                    <p class="section-label">YOUR PERSONAL STUDY PLANNER</p>
+                    <h2>Today's little tasks <span>♡</span></h2>
+                    <p class="subheading">Write it down. Take a breath. You've got this.</p>
+                </div>
+                <span class="task-count" id="taskCountBadge">0 tasks</span>
+            </div>
+
+            <form class="task-form" id="taskForm">
+                <label class="sr-only" for="taskInput">Study task</label>
+                <input type="text" id="taskInput"
+                    placeholder="e.g. Review my software engineering notes..."
+                    maxlength="180" autocomplete="off" required>
+                <label class="sr-only" for="taskDuration">Task timer length</label>
+                <select id="taskDuration" aria-label="Task timer length">
+                    <option value="300">5 minutes</option>
+                    <option value="900">15 minutes</option>
+                    <option value="1500" selected>25 minutes</option>
+                    <option value="2700">45 minutes</option>
+                    <option value="3600">60 minutes</option>
+                </select>
+                <button type="submit" id="addTaskBtn"><span>+</span> Add task</button>
+            </form>
+            <p class="form-message" id="formMessage" aria-live="polite"></p>
+
+            <div class="task-toolbar">
+                <span id="taskListLabel">YOUR LIST</span>
+                <label class="filter-label" for="taskFilter">Show:</label>
+                <select id="taskFilter">
+                    <option value="all">All tasks</option>
+                    <option value="active">To do</option>
+                    <option value="completed">Completed</option>
+                </select>
+            </div>
+
+            <ul id="taskList" aria-label="Your study tasks"></ul>
+            <div class="empty-state" id="emptyState">
+                <span>🍵</span>
+                <h3>Your little list is waiting.</h3>
+                <p>Add your first task and make today count.</p>
+            </div>
+            <div class="task-footer">
+                <span id="footerMessage">A gentle reminder: rest is productive too.</span>
+                <button type="button" id="clearCompletedBtn">Clear completed</button>
+            </div>
+        </section>
+
+        <section class="schedule-section" id="schedule">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">YOUR TIME, YOUR FLOW</p>
+                    <h2>Schedule Planner 📅</h2>
+                    <p>Make room for the things that matter.</p>
+                </div>
+            </div>
+
+            <div class="schedule-card">
+                <h3>My Weekly Timetable</h3>
+                <div class="week-days" id="weekDays">
+                    <button type="button" class="day-button" data-day="Monday">Mon</button>
+                    <button type="button" class="day-button" data-day="Tuesday">Tue</button>
+                    <button type="button" class="day-button" data-day="Wednesday">Wed</button>
+                    <button type="button" class="day-button" data-day="Thursday">Thu</button>
+                    <button type="button" class="day-button" data-day="Friday">Fri</button>
+                    <button type="button" class="day-button" data-day="Saturday">Sat</button>
+                    <button type="button" class="day-button" data-day="Sunday">Sun</button>
+                </div>
+                <p class="selected-day" id="selectedDay">Today's schedule</p>
+                <div id="dailyAgenda" class="daily-agenda">
+                    <p class="empty-schedule">Your day is waiting to be planned. 🌱</p>
+                </div>
+            </div>
+
+            <div class="schedule-card">
+                <h3>Add to My Schedule ✨</h3>
+                <form id="scheduleForm">
+                    <label for="eventTitle">What's happening?</label>
+                    <input type="text" id="eventTitle" placeholder="e.g. Software Engineering lecture" required>
+                    <label for="eventDay">Choose a day</label>
+                    <select id="eventDay" required>
+                        <option value="Monday">Monday</option><option value="Tuesday">Tuesday</option>
+                        <option value="Wednesday">Wednesday</option><option value="Thursday">Thursday</option>
+                        <option value="Friday">Friday</option><option value="Saturday">Saturday</option>
+                        <option value="Sunday">Sunday</option>
+                    </select>
+                    <div class="schedule-time-row">
+                        <div><label for="eventStart">Start time</label><input type="time" id="eventStart" required></div>
+                        <div><label for="eventEnd">End time</label><input type="time" id="eventEnd" required></div>
+                    </div>
+                    <label for="eventType">Event type</label>
+                    <select id="eventType">
+                        <option value="class">📚 Class</option><option value="study">✍️ Study session</option>
+                        <option value="assignment">📝 Assignment</option><option value="break">🌿 Break</option>
+                        <option value="other">✨ Other</option>
+                    </select>
+                    <button type="submit" class="schedule-add-button">+ Add to Schedule</button>
+                    <p id="scheduleMessage" aria-live="polite"></p>
+                </form>
+            </div>
+
+            <div class="schedule-card">
+                <h3>Coming Up 🌷</h3>
+                <div id="upcomingEvents"><p class="empty-schedule">Your upcoming events will appear here.</p></div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Made with ☕, autumn leaves & a little love.</p>
+            <span>STUDYFLOW © 2026</span>
+        </footer>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
